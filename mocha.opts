@@ -1,0 +1,9 @@
+--require chai/register-assert                        # Include Chai's assert style globally
+--require chai/register-expect                        # Include Chai's expect style globally
+--require chai/register-should                        # Include Chai's should style globally
+--timeout 10000                                       # Set the test timeout to 10 seconds
+--recursive                                           # Include all subdirectories under "tests/"
+--reporter spec                                       # Use the 'spec' reporter for detailed output
+--colors                                              # Enable colored output
+tests/**/*.test.js                                    # Include all test files in "tests/" and its subdirectories
+--reporter-options output=reports/mocha_report.json   # Output report to the "reports" directory
