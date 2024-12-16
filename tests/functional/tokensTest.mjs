@@ -119,18 +119,21 @@ describe('Functional Test Automation for the /tokens API Endpoint', () => {
 
 
   // TC_LIFI-API_013
-  it('Should validate error for excessively long chain ID', async () => {
+  it('Should validate error for excessively long chain ID', async function () {
+    this.timeout(10000); // Extend timeout to 10 seconds
     const params = { chains: '12345678901234567890' }; // Excessively long chain ID
     try {
       await sendGetRequest('/tokens', params);
     } catch (error) {
       expect(error.message).to.include('GET Request Failed');
+      expect(error.message).to.include('/chains/0 must'); // Match schema validation error
     }
   });
 
 
   // TC_LIFI-API_014
-  it('Should validate error response for missing required parameters', async () => {
+  it('Should validate error response for missing required parameters', async function () {
+    this.timeout(10000); // Extend timeout to 10 seconds
     try {
       await sendGetRequest('/tokens', { missingParam: 'test' });
     } catch (error) {

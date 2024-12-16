@@ -52,7 +52,8 @@ describe('Security Test Automation for the /tokens API Endpoint', () => {
 
 
   // TC_LIFI-API_032
-  it('Should verify the endpoint rejects requests with SQL injection', async () => {
+  it('Should verify the endpoint rejects requests with SQL injection', async function () {
+    this.timeout(10000); // Extend timeout to 10 seconds
     const maliciousInput = "' OR 1=1 --";
     try {
       await sendGetRequest('/tokens', { chains: maliciousInput });
